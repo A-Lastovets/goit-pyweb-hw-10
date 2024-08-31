@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the online library!</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'quotes:signupuser' %}">Sign Up</a></li>
+            <li><a href="{% url 'quotes:loginuser' %}">Login</a></li>
+            <li><a href="{% url 'quotes:author_list' %}">Authors</a></li>
+            <li><a href="{% url 'quotes:quote_list' %}">Quotes</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

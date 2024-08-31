@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ author.fullname }}
+{% endblock %}
+
+{% block content %}
+    <div class="author-detail">
+        <h1>{{ author.fullname }}</h1>
+        <p><strong>Date of Birth:</strong> {{ author.born_date|date:"F d, Y" }}</p>
+        <p><strong>Place of Birth:</strong> {{ author.born_location }}</p>
+        <p><strong>Description:</strong></p>
+        <p>{{ author.description }}</p>
+
+        <hr>
+
+        <h2>Quotes by {{ author.fullname }}</h2>
+        <ul>
+            {% for quote in author.quote_set.all %}
+                <li>{{ quote.text }}</li>
+            {% empty %}
+                <li>No quotes available for this author.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

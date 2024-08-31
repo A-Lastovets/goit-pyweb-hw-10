@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Add Quote{% endblock %}
+
+{% block content %}
+    <h1>Add a New Quote</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="text">Quote:</label>
+        <textarea id="text" name="text" required></textarea>
+        <br>
+        <label for="author">Author:</label>
+        <select id="author" name="author" required>
+            {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.fullname }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Add Quote</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

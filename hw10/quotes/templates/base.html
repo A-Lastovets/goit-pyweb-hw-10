@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Online Library{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'noteapp/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>{% block header %}Online Library{% endblock %}</h1>
+            {% if user.is_authenticated %}
+                <div class="auth-info">
+                    <span>Welcome <b>{{ user.username }}</b>!</span>
+                    <div class="auth-buttons">
+                        <a href="{% url 'quotes:logoutuser' %}" class="logout-btn">Logout</a>
+                        <a href="{% url 'quotes:profile' %}" class="profile-btn">Profile</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'quotes:author_list' %}">Authors</a></li>
+                <li><a href="{% url 'quotes:quote_list' %}">Quotes</a></li>
+                <li><a href="{% url 'quotes:add_author' %}">Add Author</a></li>
+                <li><a href="{% url 'quotes:add_quote' %}">Add Quote</a></li>
+            {% else %}
+                <li><a href="{% url 'quotes:signupuser' %}">Sign Up</a></li>
+                <li><a href="{% url 'quotes:loginuser' %}">Login</a></li>
+                <li><a href="{% url 'quotes:author_list' %}">Authors</a></li>
+                <li><a href="{% url 'quotes:quote_list' %}">Quotes</a></li>
+                <li><a href="{% url 'quotes:home' %}">Back to Home</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; Online Library 2024</p>
+    </footer>
+</body>
+</html>

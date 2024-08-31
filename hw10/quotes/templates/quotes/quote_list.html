@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Quotes List
+{% endblock %}
+
+{% block content %}
+    <h1>Quotes</h1>
+    <ul>
+        {% for quote in quotes %}
+            <li>
+                "{{ quote.text }}" - {{ quote.author.fullname }}
+                <a href="{% url 'quotes:author_page' quote.author.id %}" class="btn btn-secondary">About Author</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

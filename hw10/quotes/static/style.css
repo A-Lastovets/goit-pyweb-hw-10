@@ -1,0 +1,27 @@
+/* Основні стилі для кнопок авторизації */
+.auth-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px; /* Відступ між кнопками */
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px; /* Відступ між кнопками */
+}
+
+.logout-btn,
+.profile-btn {
+    background-color: #007bff; /* Синій фон */
+    color: white; /* Білий текст */
+    padding: 5px 10px; /* Внутрішні відступи */
+    text-decoration: none; /* Без підкреслення */
+    border-radius: 5px; /* Закруглені кути */
+    font-size: 14px; /* Розмір шрифту */
+}
+
+.logout-btn:hover,
+.profile-btn:hover {
+    background-color: #0056b3; /* Темніший синій при наведенні */
+}

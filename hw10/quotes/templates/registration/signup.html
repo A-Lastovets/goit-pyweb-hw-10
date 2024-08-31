@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Create an account</h2>
+</div>
+
+{% if messages %}
+<div>
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert-{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Додаємо параметр next в action -->
+<form method="post" action="{% url 'quotes:signupuser' %}?next={% url 'quotes:add_author' %}">
+    {% csrf_token %}
+    <div>
+        <label>Username:</label>
+        {{ form.username }}
+    </div>
+
+    <div>
+        <label>Password:</label>
+        {{ form.password1 }}
+    </div>
+
+    <div>
+        <label>Confirm Password:</label>
+        {{ form.password2 }}
+    </div>
+
+    <div>
+        <button type="submit">Sign Up</button>
+        <button type="reset">Reset</button>
+    </div>
+</form>
+
+{% endblock %}

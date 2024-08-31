@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Quotes by {{ author.fullname }}{% endblock %}
+
+{% block content %}
+    <h2>Quotes by {{ author.fullname }}</h2>
+    <ul>
+        {% for quote in quotes %}
+            <li>{{ quote.text }}</li>
+        {% empty %}
+            <li>No quotes available for this author.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'quotes:author_list' %}">Back to Authors List</a>
+{% endblock %}

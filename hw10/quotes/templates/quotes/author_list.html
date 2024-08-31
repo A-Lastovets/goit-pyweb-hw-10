@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Authors List
+{% endblock %}
+
+{% block content %}
+    <h1>Authors</h1>
+    <ul>
+        {% for author in authors %}
+            <li>
+                {{ author.fullname }}
+                <!-- Посилання на сторінку з деталями автора -->
+                <a href="{% url 'quotes:author_page' author.id %}" class="btn btn-primary">View Details</a>
+                
+                <!-- Посилання на сторінку з цитатами автора -->
+                <a href="{% url 'quotes:author_quotes' author.id %}" class="btn btn-secondary">View Quotes</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
