@@ -1,9 +1,7 @@
 # goit-pyweb-hw-10
 
-Працював через docker контейнер:
-hw10-postgres
-postgres
-5432:5432⁠
+Працював через docker контейнер: hw10-postgres
+запуск: docker-compose up -d
 
 1. скрипт: "python manage.py migrate_mongo_to_postgres"
 запустить міграцію з бази данних Mongo до бази данних Postgres

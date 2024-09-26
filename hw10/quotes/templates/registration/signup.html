@@ -19,9 +19,15 @@
 <!-- Додаємо параметр next в action -->
 <form method="post" action="{% url 'quotes:signupuser' %}?next={% url 'quotes:add_author' %}">
     {% csrf_token %}
+    
     <div>
         <label>Username:</label>
         {{ form.username }}
+    </div>
+
+    <div>
+        <label>Email:</label>
+        {{ form.email }}
     </div>
 
     <div>

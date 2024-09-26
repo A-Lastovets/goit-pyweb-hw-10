@@ -20,4 +20,10 @@ urlpatterns = [
     path('add_quote/', views.add_quote, name='add_quote'),
     path('author/<str:author_id>/', views.author_page, name='author_page'),  # Маршрут до сторінки з деталями автора
     path('author/<str:author_id>/quotes/', views.author_quotes, name='author_quotes'),  # Маршрут до сторінки з цитатами автора
+
+    # Маршрути для скидання пароля
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset_form.html'), name='password_reset'),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
 ]
